@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { TodoContext } from '../App';
 
 export default function Header() {
+  const [title,setTitle] = useState('');
+  const contextData = useContext(TodoContext);
+
+  const handleAddTodo = ()=>{
+    let todo =   {
+      "userId": 1,
+      "id": Date.now(),
+      "title": title,
+      "completed": false
+    };
+    contextData.dispatch({
+      type:"ADD",
+      todo:todo
+    });
+    setTitle('');
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -32,14 +50,10 @@ export default function Header() {
               type="title"
               placeholder="Todo title"
               aria-label="title"
+              onChange={(e)=>{setTitle(e.target.value)}}
+              value={title}
             />
-            {/* <input
-              className="form-control me-2"
-              type="date"
-              placeholder="Todo date"
-              aria-label="date"
-            /> */}
-            <button className="btn btn-outline-success" type="button">
+            <button className="btn btn-outline-success" onClick={handleAddTodo} type="button">
               Add
             </button>
           </form>
