@@ -47,8 +47,8 @@ function App() {
   return (
     <>
       <TodoContext.Provider value={{todos, dispatch}}>
-        <Header/>
       <BrowserRouter>
+        <Header/>
         <Routes>
           <Route path='todo' element={<TodoView/>}></Route>
           <Route index exect element={<TodoCardList/>}></Route>

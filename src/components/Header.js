@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { TodoContext } from '../App';
 
 export default function Header() {
@@ -39,9 +40,9 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page">
+              <Link to={'/'} className="nav-link active" aria-current="page">
                 Home
-              </a>
+              </Link >
             </li>
           </ul>
           <form className="d-flex" role="title">
